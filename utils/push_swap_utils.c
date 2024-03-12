@@ -24,7 +24,6 @@ void    free_memory(char **program_params)
 /*
 validate_input()
 {
-    // bigger than INT_MAX or smaller than INT_MIN
     // checks if args are duplicated
     // in the above cases display "Error"
     // if not, initialize the stacks a and b
