@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <limits.h>
 # include "includes/Libft/libft.h"
 # include "includes/Printf/libftprintf.h"
 
