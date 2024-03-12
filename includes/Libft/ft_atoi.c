@@ -10,10 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../push_swap.h"
+
+int	validate_nbr(char *str)
+{
+	int	pos;
+
+	pos = 0;
+	while (str[pos])
+	{
+		if (str[pos] >= '0' && str[pos] <= '9')
+			pos++;
+		else
+		{
+			ft_printf("Error\n");
+			return (-2);
+		}
+	}
+	return (1);
+}
 
 int	ft_atoi(const char *nptr)
 {
+//args are all ints?
+// args are bigger than INT_MAX or smaller than INT_MIN?
+// in the above cases display "Error"
 	int		i;
 	int		convnum;
 	int		sign;
@@ -29,23 +50,26 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	if (validate_nbr((char *)(nptr + i)))
 	{
-		convnum = convnum * 10 + (nptr[i] - 48);
-		i++;
+		while (nptr[i] >= '0' && nptr[i] <= '9')
+		{
+			convnum = convnum * 10 + (nptr[i] - 48);
+			i++;
+		}
+		return (convnum * sign);
 	}
-	return (convnum * sign);
+	else
+		return (-2);
 }
-/*
+
 int	main(void)
 {
-	#include <stdio.h>
-
 	char	*str;
-	int	convertstr;
+	int		convertstr;
 
-	str = "546";
+	str = "-27";
 	convertstr = ft_atoi(str);
-	printf("%d\n", convertstr);
+	ft_printf("%d\n", convertstr);
 	return (0);
-}*/
+}
