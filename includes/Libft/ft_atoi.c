@@ -12,7 +12,17 @@
 
 #include "../../push_swap.h"
 
-int	validate_nbr(char *str)
+static int	check_intmin_intmax(int nbr)
+{
+	if (nbr <= INT_MIN || nbr >= INT_MAX)
+	{
+		ft_printf("Error\n"); // substitute to a PRINTERROR
+		return (-2);
+	}
+	return (nbr);
+}
+
+static int	validate_nbr(char *str)
 {
 	int	pos;
 
@@ -43,7 +53,7 @@ int	ft_atoi(const char *nptr)
 	sign = 1;
 	//while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
 	//	i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (nptr[i] == '-' || nptr[i] == '+')  // mantain the positive signal???
 	{
 		if (nptr[i++] == '-')
 			sign = -1;
@@ -57,7 +67,8 @@ int	ft_atoi(const char *nptr)
 	{
 		while (nptr[i] >= '0' && nptr[i] <= '9')
 			convnum = convnum * 10 + (nptr[i++] - 48);
-		return (convnum * sign);
+		convnum = check_intmin_intmax(convnum * sign);
+		return (convnum);
 	}
 	else
 		return (-2);
@@ -68,7 +79,7 @@ int	main(void)
 	char	*str;
 	int		convertstr;
 
-	str = "+";
+	str = "2147483646";
 	convertstr = ft_atoi(str);
 	ft_printf("%d\n", convertstr);
 	return (0);
