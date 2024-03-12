@@ -32,7 +32,6 @@ int	validate_nbr(char *str)
 
 int	ft_atoi(const char *nptr)
 {
-//args are all ints?
 // args are bigger than INT_MAX or smaller than INT_MIN?
 // in the above cases display "Error"
 	int		i;
