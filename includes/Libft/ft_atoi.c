@@ -23,7 +23,7 @@ int	validate_nbr(char *str)
 			pos++;
 		else
 		{
-			ft_printf("Error\n");
+			ft_printf("Error\n"); // substitute to a PRINTERROR
 			return (-2);
 		}
 	}
@@ -41,21 +41,22 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	convnum = 0;
 	sign = 1;
-	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
-		i++;
+	//while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
+	//	i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if (nptr[i] == '-')
+		if (nptr[i++] == '-')
 			sign = -1;
-		i++;
+		if (!nptr[i])
+		{
+			ft_printf("Error\n"); // substitute to a PRINTERROR
+			return (-2);
+		}
 	}
 	if (validate_nbr((char *)(nptr + i)))
 	{
 		while (nptr[i] >= '0' && nptr[i] <= '9')
-		{
-			convnum = convnum * 10 + (nptr[i] - 48);
-			i++;
-		}
+			convnum = convnum * 10 + (nptr[i++] - 48);
 		return (convnum * sign);
 	}
 	else
@@ -67,7 +68,7 @@ int	main(void)
 	char	*str;
 	int		convertstr;
 
-	str = "–2147483648";
+	str = "+";
 	convertstr = ft_atoi(str);
 	ft_printf("%d\n", convertstr);
 	return (0);
