@@ -17,4 +17,6 @@
 # include "includes/Libft/libft.h"
 # include "includes/Printf/libftprintf.h"
 
+void    free_memory(char **program_params);
+
 #endif
