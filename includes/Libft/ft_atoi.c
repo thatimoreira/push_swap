@@ -68,7 +68,7 @@ int	main(void)
 	char	*str;
 	int		convertstr;
 
-	str = "-27";
+	str = "–2147483648";
 	convertstr = ft_atoi(str);
 	ft_printf("%d\n", convertstr);
 	return (0);
