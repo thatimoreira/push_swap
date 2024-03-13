@@ -18,6 +18,14 @@
 # include "includes/Libft/libft.h"
 # include "includes/Printf/libftprintf.h"
 
+# define PRINT_ERROR ft_printf("Error\n");
+
+typedef struct  stack
+{
+    int num;
+    struct stack *next;
+} stack;
+
 void    free_memory(char **program_params);
 
 #endif
